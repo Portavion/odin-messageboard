@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Index</title>
+		<link rel="stylesheet" href="/styles.css" />
+	</head>
+	<body>
+		<h1>Porta's message board</h1>
+		<button><a href="/new">Leave a message</a></button>
+		<% messages.map((message) => { %>
+		<div class="messageContainer">
+			<div class="messageHeader">
+				<p><strong><%= message.user %></strong></p>
+				<p><em><%= message.added %></em></p>
+			</div>
+			<div class="messageContent">
+				<p><%= message.text %></p>
+			</div>
+			<button>
+				<a
+					href="/message/<%=message.user%>/<%=message.text%>/<%=message.added%>"
+					>more details</a
+				>
+			</button>
+		</div>
+		<% }) %>
+	</body>
+</html>

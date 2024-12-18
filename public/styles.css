@@ -1,0 +1,33 @@
+.messageHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /*justify-content: center;*/
+  margin-bottom: 10px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+p {
+  margin: 0px;
+}
+em {
+  font-size: 8px;
+}
+strong {
+  margin-right: 5px;
+}
+.messageContainer {
+  height: 100px;
+  width: 350px;
+  border-radius: 1em;
+  overflow: hidden;
+  box-shadow: 0 10px 20px #dbdbdb;
+  font-family: sans-serif;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
