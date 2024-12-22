@@ -12,7 +12,7 @@
 		<% messages.map((message) => { %>
 		<div class="messageContainer">
 			<div class="messageHeader">
-				<p><strong><%= message.user %></strong></p>
+				<p><strong><%= message.username %></strong></p>
 				<p><em><%= message.added %></em></p>
 			</div>
 			<div class="messageContent">
@@ -20,7 +20,7 @@
 			</div>
 			<button>
 				<a
-					href="/message/<%=message.user%>/<%=message.text%>/<%=message.added%>"
+					href="/message/<%=message.username%>/<%=message.text%>/<%=message.added%>"
 					>more details</a
 				>
 			</button>

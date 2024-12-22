@@ -2,48 +2,21 @@ const express = require("express");
 const app = express();
 const path = require("node:path");
 const assetsPath = path.join(__dirname, "public");
+const { body, validationResult } = require("express-validator");
+
 app.use(express.static(assetsPath));
 app.use(express.urlencoded({ extended: true }));
 
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Amando",
-    added: new Date(),
-  },
-  {
-    text: "Hello World!",
-    user: "Charles",
-    added: new Date(),
-  },
-];
+const messageRouter = require("./routers/messageRouter.js");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-app.get("/", (req, res) => {
-  res.render("index", { messages: messages });
-});
+app.get("/", messageRouter);
+app.get("/new", messageRouter);
+app.get("/message/:username/:text/:added", messageRouter);
 
-app.get("/new", (req, res) => {
-  res.render("form");
-});
-
-app.get("/message/:user/:text/:added", (req, res) => {
-  res.render("message", {
-    user: req.params.user,
-    text: req.params.text,
-    added: req.params.added,
-  });
-});
-
-app.post("/new", (req, res) => {
-  const author = req.body.name;
-  const text = req.body.message;
-  const added = new Date();
-  messages.push({ user: author, text: text, added: added });
-  res.redirect("/");
-});
+app.post("/new", messageRouter);
 
 const PORT = 3000;
 app.listen(PORT, () => {
